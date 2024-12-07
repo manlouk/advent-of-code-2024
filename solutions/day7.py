@@ -19,6 +19,9 @@ def valid_test_value(target: int, numbers: list, symbols: list):
     def backtrack(target, numbers):
         if eval_expression(numbers,result) == target and len(result)==len(numbers)-1:
             return True
+        
+        if eval_expression(numbers, result)> target:
+            return False
 
         if len(result) == len(numbers)-1:
             return False
@@ -39,7 +42,6 @@ def bridge_repair(filename):
     with open(filename,'r') as input:
         total = 0
         for i,line in enumerate(input):
-            print(i)
             target, numbers = line.strip().split(':')
      
             numbers = [int(c) for c in numbers.strip().split(' ')]
