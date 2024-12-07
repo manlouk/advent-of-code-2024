@@ -41,7 +41,7 @@ def bridge_repair(filename):
 
     with open(filename,'r') as input:
         total = 0
-        for i,line in enumerate(input):
+        for line in input:
             target, numbers = line.strip().split(':')
      
             numbers = [int(c) for c in numbers.strip().split(' ')]
