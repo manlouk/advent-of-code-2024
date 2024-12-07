@@ -1,6 +1,7 @@
 import os
 import timeit
 
+
 def create_graph(ordering_rules: list) -> dict:
 
     graph = {}
@@ -28,8 +29,6 @@ def correctly_ordered_update(update: list, graph: dict) -> bool:
 
     return True
 
-                
-
 
 def dfs(graph, start, update, path):
 
@@ -41,11 +40,9 @@ def dfs(graph, start, update, path):
             if result:
                 return result
     return None
-    
 
 
 def order_updates(update: list, graph: dict) -> list:
-
 
     update = set(update)
 
@@ -59,11 +56,10 @@ def order_updates(update: list, graph: dict) -> list:
                     pruned_graph[parent].append(child)
 
     for parent in pruned_graph:
-        
+
         path = dfs(pruned_graph, parent, update, [parent])
         if path:
             return path
-    
 
 
 def find_middle_number(update) -> int:
@@ -92,9 +88,7 @@ def print_queue(filename: str) -> int:
         return total_correct, total_incorrect
 
 
-
 if __name__ == "__main__":
     part1, part2 = print_queue("data/input5.txt")
     print(f"Solution for part 1: {part1}")
     print(f"Solution for part 2: {part2}")
-    
