@@ -18,7 +18,7 @@ def valid_test_value(target: int, numbers: list, symbols: list):
 
     result = []
 
-    def backtrack(target, numbers):
+    def backtrack():
         if (
             eval_expression(numbers, result) == target
             and len(result) == len(numbers) - 1
@@ -33,13 +33,13 @@ def valid_test_value(target: int, numbers: list, symbols: list):
         else:
             for symbol in symbols:
                 result.append(symbol)
-                if backtrack(target, numbers):
+                if backtrack():
                     return True
                 result.pop()
 
             return False
 
-    return backtrack(target, numbers)
+    return backtrack()
 
 
 def bridge_repair(filename):
@@ -59,6 +59,8 @@ def bridge_repair(filename):
 
         return total
 
+
+valid_test_value(190, [10, 19], ["*", "+"])
 
 if __name__ == "__main__":
     print(f"Solution: {bridge_repair('data/input7.txt')}")
