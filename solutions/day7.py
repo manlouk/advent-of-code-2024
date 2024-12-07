@@ -6,12 +6,14 @@ def eval_expression(numbers, operators)-> int:
     for number, operator in zip(numbers[1:], operators):
         if operator=='+':
             total+=int(number)
-        else:
+        elif operator=='*':
             total*=int(number)
+        else:
+            total = int(str(total)+str(number))
     return total
 
 
-def valid_test_value(target: int, numbers: list):
+def valid_test_value(target: int, numbers: list, symbols: list):
 
     result = []
     def backtrack(target, numbers):
@@ -21,38 +23,36 @@ def valid_test_value(target: int, numbers: list):
         if len(result) == len(numbers)-1:
             return False
         else:
-            result.append('*')
-            if backtrack(target, numbers):
-                return True
-            result.pop()
-            result.append('+')
-
-            if backtrack(target, numbers):
-                return True
-            result.pop()
+            for symbol in symbols:
+                result.append(symbol)
+                if backtrack(target, numbers):
+                    return True
+                result.pop()
 
             return False
 
-    
     return backtrack(target,numbers)
         
 
-def part1(filename):
+def bridge_repair(filename):
 
     with open(filename,'r') as input:
         total = 0
-        for line in input:
+        for i,line in enumerate(input):
+            print(i)
             target, numbers = line.strip().split(':')
      
             numbers = [int(c) for c in numbers.strip().split(' ')]
             target = int(target)
 
-            if valid_test_value(target, numbers):
+            if valid_test_value(target, numbers,['*','+']) or valid_test_value(target,numbers,['+','*','||']):
                 total+=target
+    
+
         return total
 
 
 if __name__=="__main__":
-    print(f"Solution for part 1: {part1('data/input7.txt')}")
+    print(f"Solution: {bridge_repair('data/input7.txt')}")
 
 
