@@ -18,9 +18,6 @@ print(total)
 
 #Part 2
 
-dp = []
-
-
 with open('data/input22.txt','r') as f:
     buyers = [int(secret.strip()) for secret in f.readlines()]
     prices = []
