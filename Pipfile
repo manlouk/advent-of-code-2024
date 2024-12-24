@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 black = "*"
+pytest = "*"
+requests = "*"
+pyperclip = "*"
+numpy = "*"
 
 [dev-packages]
 

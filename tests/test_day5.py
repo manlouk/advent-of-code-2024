@@ -20,7 +20,7 @@ def incorrect_update():
 
 def test_create_graph(ordering_rules):
     ordering_rules = ordering_rules.split("\n")
-    assert create_graph(ordering_rules) == {53: [13], 97: [13, 53], 13: [20], 20:[]}
+    assert create_graph(ordering_rules) == {53: [13], 97: [13, 53], 13: [20], 20: []}
 
 
 def test_correctly_ordered_update(correct_update, incorrect_update, ordering_rules):
@@ -39,7 +39,7 @@ def test_find_middle_number():
 def test_order_updates(ordering_rules):
     ordering_rules = ordering_rules.split("\n")
     graph = create_graph(ordering_rules)
-    assert order_updates([75,97,61,47, 47], graph) == [97,75,47,61,53]
+    assert order_updates([75, 97, 61, 47, 47], graph) == [97, 75, 47, 61, 53]
 
 
 def test_print_queue():
